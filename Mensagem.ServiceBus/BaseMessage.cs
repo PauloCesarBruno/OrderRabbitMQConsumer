@@ -1,11 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace Mensagem.MessageBus;
 
-namespace Mensagem.MessageBus
+public class BaseMessage
 {
-    public class BaseMessage
-    {
-        public int Id { get; set; }
-        [DataType(DataType.Date)]
-        public DateTime DataEntrada { get; set; }
-    }
+    public int Id { get; set; }
+    public DateTime DataRegistro { get; set; }
 }

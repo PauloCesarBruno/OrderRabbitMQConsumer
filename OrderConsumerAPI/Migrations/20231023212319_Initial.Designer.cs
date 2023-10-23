@@ -12,7 +12,7 @@ using OrderConsumerAPI.Data.Context;
 namespace OrderConsumerAPI.Migrations
 {
     [DbContext(typeof(SQLContext))]
-    [Migration("20231014030951_Initial")]
+    [Migration("20231023212319_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace OrderConsumerAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("OrderConsumerAPI.Messages.CellConcertOrder", b =>
+            modelBuilder.Entity("OrderConsumerAPI.Messages.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -33,23 +33,32 @@ namespace OrderConsumerAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("Concertado")
-                        .HasColumnType("bit");
+                    b.Property<string>("CPF")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Data_Registro")
+                    b.Property<string>("CVV")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Cartao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DataRegistro")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("Devolvido")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("MarcaAparelho")
+                    b.Property<string>("DataVencimento")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ModeloAparelho")
+                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("ValorConserto")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<string>("Nome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumeroCartao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefone")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

@@ -35,23 +35,27 @@ namespace OrderConsumerAPI.MessageConsumer
             consumer.Received += (chanel, evt) =>
             {
                 var content = Encoding.UTF8.GetString(evt.Body.ToArray());
-                CellConcertOrder ord = JsonSerializer.Deserialize<CellConcertOrder>(content);
+                Order ord = JsonSerializer.Deserialize<Order>(content);
                 ProcessMessages(ord).GetAwaiter().GetResult();
                 _channel.BasicAck(evt.DeliveryTag, false);
             };
             _channel.BasicConsume("Orderqueue", false, consumer);
             return Task.CompletedTask;
         }
-        private async Task ProcessMessages(CellConcertOrder ord)
+        private async Task ProcessMessages(Order ord)
         {
-            CellConcertOrder msg = new()
+            Order msg = new()
             {
                 Id = ord.Id,
-                DataEntrada = ord.DataEntrada,
-                MarcaAparelho = ord.MarcaAparelho,
-                ModeloAparelho = ord.ModeloAparelho,
-                Reparado = ord.Reparado,
-                ValorConserto = ord.ValorConserto,
+                DataRegistro = ord.DataRegistro,
+                Nome = ord.Nome,
+                CPF = ord.CPF,
+                Email = ord.Email,
+                Telefone = ord.Telefone,
+                Cartao = ord.Cartao,
+                NumeroCartao = ord.NumeroCartao,
+                DataVencimento = ord.DataVencimento,
+                CVV = ord.CVV,
             };
 
             await _repository.AddOrder(msg);

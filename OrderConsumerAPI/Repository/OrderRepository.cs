@@ -13,7 +13,7 @@ namespace OrderConsumerAPI.Repository
             _context = context;
         }
 
-        public async Task<bool> AddOrder(CellConcertOrder order)
+        public async Task<bool> AddOrder(Order order)
         {
             if (order == null) return false;
             await using var _db = new SQLContext(_context);

@@ -4,6 +4,6 @@ namespace OrderConsumerAPI.Repository
 {
     public interface IOrderRepository
     {
-        Task<bool> AddOrder(CellConcertOrder order);
+        Task<bool> AddOrder(Order order);
     }
 }
