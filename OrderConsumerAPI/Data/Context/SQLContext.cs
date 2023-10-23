@@ -9,6 +9,5 @@ public class SQLContext : DbContext
 
     public SQLContext() { }
 
-    public DbSet<Order> orders { get; set; }
-       
+    public DbSet<Order> orders { get; set; }         
 }
