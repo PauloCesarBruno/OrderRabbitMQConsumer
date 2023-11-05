@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace OrderConsumerAPI.Messages;
-//
+
 public class Order : BaseMessage
 {      
     public string Nome { get; set; }
