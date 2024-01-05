@@ -57,7 +57,6 @@ namespace OrderConsumerAPI.MessageConsumer
                 DataVencimento = ord.DataVencimento,
                 CVV = ord.CVV,
             };
-
             await _repository.AddOrder(msg);
         }
     }
